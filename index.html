@@ -1,0 +1,344 @@
+<!doctype html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/scripts.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="calculator-input-wrap">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Average Monthly Payroll</label>
+                        <input type="text" class="form-control" id="average_monthly_payroll" placeholder="" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1"># of Employees</label>
+                        <input type="text" class="form-control" id="count_employees" placeholder="" value="5" onkeypress="return isNumberKey(event)">
+                    </div>
+                    <div class="form-group">
+                        <label for="desired_loan_amount">Desired Loan Amount</label>
+                        <select class="form-control" id="desired_loan_amount">
+                          <option min="100000" max="150000">100,000 - 150,000</option>
+                          <option min="150000" max="200000">150,000 - 200,000</option>
+                          <option min="200000" max="250000">200,000 - 250,000</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary mb-2" id="btn_show_result">Show me possible scenarios</button>
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="calculator-result-wrap">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Monthly</th>
+                                <th scope="col">Jobs</th>
+                                <th scope="col">Monthly Payroll</th>
+                                <th scope="col">State Tax</th>
+                                <th scope="col">ER Benefits</th>
+                                <th scope="col">ER Retirement</th>
+                                <th scope="col">Monthly Payroll Cos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1/19</th>
+                                <td><span id="jobs_1"></span></td>
+                                <td><span id="monthly_payroll_1"></span></td>
+                                <td><span id="state_tax_1"></span></td>
+                                <td><span id="er_benefits_1"></span></td>
+                                <td><span id="er_retirement_1"></span></td>
+                                <td><span id="monthly_payroll_cos_1"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2/19</th>
+                                <td><span id="jobs_2"></span></td>
+                                <td><span id="monthly_payroll_2"></span></td>
+                                <td><span id="state_tax_2"></span></td>
+                                <td><span id="er_benefits_2"></span></td>
+                                <td><span id="er_retirement_2"></span></td>
+                                <td><span id="monthly_payroll_cos_2"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3/19</th>
+                                <td><span id="jobs_3"></span></td>
+                                <td><span id="monthly_payroll_3"></span></td>
+                                <td><span id="state_tax_3"></span></td>
+                                <td><span id="er_benefits_3"></span></td>
+                                <td><span id="er_retirement_3"></span></td>
+                                <td><span id="monthly_payroll_cos_3"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4/19</th>
+                                <td><span id="jobs_4"></span></td>
+                                <td><span id="monthly_payroll_4"></span></td>
+                                <td><span id="state_tax_4"></span></td>
+                                <td><span id="er_benefits_4"></span></td>
+                                <td><span id="er_retirement_4"></span></td>
+                                <td><span id="monthly_payroll_cos_4"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5/19</th>
+                                <td><span id="jobs_5"></span></td>
+                                <td><span id="monthly_payroll_5"></span></td>
+                                <td><span id="state_tax_5"></span></td>
+                                <td><span id="er_benefits_5"></span></td>
+                                <td><span id="er_retirement_5"></span></td>
+                                <td><span id="monthly_payroll_cos_5"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">6/19</th>
+                                <td><span id="jobs_6"></span></td>
+                                <td><span id="monthly_payroll_6"></span></td>
+                                <td><span id="state_tax_6"></span></td>
+                                <td><span id="er_benefits_6"></span></td>
+                                <td><span id="er_retirement_6"></span></td>
+                                <td><span id="monthly_payroll_cos_6"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7/19</th>
+                                <td><span id="jobs_7"></span></td>
+                                <td><span id="monthly_payroll_7"></span></td>
+                                <td><span id="state_tax_7"></span></td>
+                                <td><span id="er_benefits_7"></span></td>
+                                <td><span id="er_retirement_7"></span></td>
+                                <td><span id="monthly_payroll_cos_7"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">8/19</th>
+                                <td><span id="jobs_8"></span></td>
+                                <td><span id="monthly_payroll_8"></span></td>
+                                <td><span id="state_tax_8"></span></td>
+                                <td><span id="er_benefits_8"></span></td>
+                                <td><span id="er_retirement_8"></span></td>
+                                <td><span id="monthly_payroll_cos_8"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">9/19</th>
+                                <td><span id="jobs_9"></span></td>
+                                <td><span id="monthly_payroll_9"></span></td>
+                                <td><span id="state_tax_9"></span></td>
+                                <td><span id="er_benefits_9"></span></td>
+                                <td><span id="er_retirement_9"></span></td>
+                                <td><span id="monthly_payroll_cos_9"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10/19</th>
+                                <td><span id="jobs_10"></span></td>
+                                <td><span id="monthly_payroll_10"></span></td>
+                                <td><span id="state_tax_10"></span></td>
+                                <td><span id="er_benefits_10"></span></td>
+                                <td><span id="er_retirement_10"></span></td>
+                                <td><span id="monthly_payroll_cos_10"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">11/19</th>
+                                <td><span id="jobs_11"></span></td>
+                                <td><span id="monthly_payroll_11"></span></td>
+                                <td><span id="state_tax_11"></span></td>
+                                <td><span id="er_benefits_11"></span></td>
+                                <td><span id="er_retirement_11"></span></td>
+                                <td><span id="monthly_payroll_cos_11"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">12/19</th>
+                                <td><span id="jobs_12"></span></td>
+                                <td><span id="monthly_payroll_12"></span></td>
+                                <td><span id="state_tax_12"></span></td>
+                                <td><span id="er_benefits_12"></span></td>
+                                <td><span id="er_retirement_12"></span></td>
+                                <td><span id="monthly_payroll_cos_12"></span></td>
+                            </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Avg Monthly</label>
+                    <input type="text" class="form-control" id="average_monthly_payroll_result" placeholder="" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function isNumberKey(evt)
+    {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }  
+
+    function calcResults(){
+        var count_employees = parseInt($('#count_employees').val());
+
+        if($('#count_employees').val() == ''){
+            alert('Please Input Employees');
+            $('#count_employees').focus();
+            return;
+        }
+
+        var desired_load_amount_min = parseInt($('#desired_loan_amount').find(':selected').attr('min'));
+        var desired_load_amount_max = parseInt($('#desired_loan_amount').find(':selected').attr('max'));
+        var desired_loan_amonut = desired_load_amount_min + Math.random() * (desired_load_amount_max - desired_load_amount_min);
+
+        var formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+        });
+
+        var average_monthly_payroll = desired_loan_amonut / 2.5;
+        $('#average_monthly_payroll').val(formatter.format(average_monthly_payroll));
+
+        var total_year_payroll = average_monthly_payroll * 12;
+
+        var biweekly_payroll = total_year_payroll / 26;
+        
+        function mt_rand (min, max) { // eslint-disable-line camelcase
+            //  discuss at: https://locutus.io/php/mt_rand/
+            // original by: Onno Marsman (https://twitter.com/onnomarsman)
+            // improved by: Brett Zamir (https://brett-zamir.me)
+            //    input by: Kongo
+            //   example 1: mt_rand(1, 1)
+            //   returns 1: 1
+            const argc = arguments.length
+            if (argc === 0) {
+                min = 0
+                max = 2147483647
+            } else if (argc === 1) {
+                throw new Error('Warning: mt_rand() expects exactly 2 parameters, 1 given')
+            } else {
+                min = parseInt(min, 10)
+                max = parseInt(max, 10)
+            }
+            return Math.floor(Math.random() * (max - min + 1)) + min
+        }
+
+        var total_jobs             = count_employees * 12;
+
+        var jobs             = [];
+        var month              = 0;
+        var jobs_min = count_employees - 2;
+        var jobs_max = count_employees + 2;
+
+        while(jobs.reduce((a, b) => a + b, 0) != total_jobs && jobs.length <= 12)
+        {
+            // jobs[month] = mt_rand(min, total_jobs / mt_rand(1, number_of_jobs));
+            jobs[month] = mt_rand(jobs_min, jobs_max);
+
+            if(++month == 12)
+            {
+                month  = 0;
+            }
+        }
+
+        var monthly_multiples = [
+            1, 1, 1, 1, 1.1335, 1.1, 0.9, 0.9, 0.9, 1, 1, 1
+        ];
+        monthly_multiples = [];
+
+        var multiple_min = 1;
+        var multiple_max = 3;
+        month = 0;
+
+        while(1)
+        {
+            // jobs[month] = mt_rand(min, total_jobs / mt_rand(1, number_of_jobs));
+            // monthly_multiples[month] = mt_rand(multiple_min, multiple_max);
+            if(jobs[month] == count_employees){
+
+                if(month == 4 || month == 9){
+                    monthly_multiples[month] = 3;
+                }
+                else{
+                    monthly_multiples[month] = 2;
+                }
+                
+            }
+            else if(jobs[month] < count_employees){
+                if(month == 4 || month == 9){
+                    monthly_multiples[month] = 3 * Math.random();
+                }
+                else{
+                    monthly_multiples[month] = 2 * Math.random();
+                }
+            }
+            else{
+                if(month == 4 || month == 9){
+                    monthly_multiples[month] = 3 * (1 + Math.random());
+                }
+                else{
+                    monthly_multiples[month] = 2 * (1 + Math.random());
+                }
+            }
+
+            if(++month == 12)
+            {
+                month  = 0;
+            }
+
+            if(monthly_multiples.reduce((a, b) => a + b, 0) > 25.9 && monthly_multiples.reduce((a, b) => a + b, 0) < 26 && monthly_multiples.length <= 12){
+                break;
+            }
+        }
+
+        // console.log(jobs, monthly_multiples, monthly_multiples.reduce((a, b) => a + b, 0), monthly_multiples.length); return;
+        var monthly_payroll_sum = 0;
+        for(var index = 0; index < 12; index ++){
+            var monthly_payroll;
+            // if(index == 4 || index == 9){
+            //     monthly_payroll = biweekly_payroll * monthly_multiples[index] * 0.26;
+            // }
+            // else{
+            //     monthly_payroll = biweekly_payroll * 2 * monthly_multiples[index];
+            // }
+
+            monthly_payroll = biweekly_payroll * monthly_multiples[index];
+
+            monthly_payroll_sum += monthly_payroll;
+            
+            var state_tax = monthly_payroll * 0.01;
+            var er_benefits = 0;
+            var er_retirement = 0;
+            var monthly_payroll_cos = monthly_payroll + state_tax + er_benefits + er_retirement;
+
+            var id_index = index + 1;
+            $('#jobs_' + id_index).text(jobs[index])
+            $('#monthly_payroll_' + id_index).text(formatter.format(monthly_payroll))
+            $('#state_tax_' + id_index).text(formatter.format(state_tax))
+            $('#er_benefits_' + id_index).text(formatter.format(er_benefits))
+            $('#er_retirement_' + id_index).text(formatter.format(er_retirement))
+            $('#monthly_payroll_cos_' + id_index).text(formatter.format(monthly_payroll_cos))
+        }
+
+        $('#average_monthly_payroll_result').val(formatter.format(monthly_payroll_sum / 12))
+    }
+
+    $(document).on('keyup', '#count_employees', function(){
+        calcResults()
+    })
+
+    $(document).on('keyup', '#desired_loan_amount', function(){
+        calcResults()
+    })
+
+    $(document).on('click', '#btn_show_result', function(){
+        calcResults()
+    })
+</script>
