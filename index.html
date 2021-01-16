@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="calculator-input-wrap">
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label for="exampleFormControlInput1">Average Monthly Payroll</label>
                         <input type="text" class="form-control" id="average_monthly_payroll" placeholder="" readonly>
                     </div>
@@ -33,11 +33,11 @@
                           <option min="200000" max="250000">200,000 - 250,000</option>
                         </select>
                     </div>
-                    <button class="btn btn-primary mb-2" id="btn_show_result">Show me possible scenarios</button>
+                    <button class="btn btn-gradient mb-2" id="btn_gen_scenarios">Show me possible scenarios</button>
                 </div>  
             </div>
         </div>
-        <div class="row">
+        <div class="row d-none">
             <div class="col-lg-12">
                 <div class="calculator-result-wrap">
                     <table class="table">
@@ -166,7 +166,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row d-none">
             <div class="col-lg-6">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Avg Monthly</label>
@@ -174,9 +174,125 @@
                 </div>
             </div>
         </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-4">
+                <div class="card mb-3 scenario-wrap" id="scenario1">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <p>Employees </p>
+                            <span class="text-right block-count-employees">7</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Average Monthly Payroll </p>
+                            <span class="text-right average-monthly-payroll">$61,820.44</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Expected Loan Amount	</p>
+                            <span class="text-right desired-loan">$154,551.11</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mb-3 scenario-wrap" id="scenario2">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <p>Employees </p>
+                            <span class="text-right block-count-employees">7</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Average Monthly Payroll </p>
+                            <span class="text-right average-monthly-payroll">$61,820.44</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Expected Loan Amount	</p>
+                            <span class="text-right desired-loan">$154,551.11</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mb-3 scenario-wrap" id="scenario3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <p>Employees </p>
+                            <span class="text-right block-count-employees">7</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Average Monthly Payroll </p>
+                            <span class="text-right average-monthly-payroll">$61,820.44</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Expected Loan Amount	</p>
+                            <span class="text-right desired-loan">$154,551.11</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mb-3 scenario-wrap" id="scenario4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <p>Employees </p>
+                            <span class="text-right block-count-employees">7</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Average Monthly Payroll </p>
+                            <span class="text-right average-monthly-payroll">$61,820.44</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Expected Loan Amount	</p>
+                            <span class="text-right desired-loan">$154,551.11</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mb-3 scenario-wrap" id="scenario5">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <p>Employees </p>
+                            <span class="text-right block-count-employees">7</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Average Monthly Payroll </p>
+                            <span class="text-right average-monthly-payroll">$61,820.44</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Expected Loan Amount	</p>
+                            <span class="text-right desired-loan">$154,551.11</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card mb-3 scenario-wrap" id="scenario6">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <p>Employees </p>
+                            <span class="text-right block-count-employees">7</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Average Monthly Payroll </p>
+                            <span class="text-right average-monthly-payroll">$61,820.44</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Expected Loan Amount	</p>
+                            <span class="text-right desired-loan">$154,551.11</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script>
+    var formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
+
     function isNumberKey(evt)
     {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -197,11 +313,6 @@
         var desired_load_amount_min = parseInt($('#desired_loan_amount').find(':selected').attr('min'));
         var desired_load_amount_max = parseInt($('#desired_loan_amount').find(':selected').attr('max'));
         var desired_loan_amonut = desired_load_amount_min + Math.random() * (desired_load_amount_max - desired_load_amount_min);
-
-        var formatter = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD'
-        });
 
         var average_monthly_payroll = desired_loan_amonut / 2.5;
         $('#average_monthly_payroll').val(formatter.format(average_monthly_payroll));
@@ -338,7 +449,28 @@
         calcResults()
     })
 
-    $(document).on('click', '#btn_show_result', function(){
-        calcResults()
+    function generateScenarios(){
+        var count_employees = parseInt($('#count_employees').val());
+
+        if($('#count_employees').val() == ''){
+            alert('Please Input Employees');
+            $('#count_employees').focus();
+            return;
+        }
+
+        var desired_load_amount_min = parseInt($('#desired_loan_amount').find(':selected').attr('min'));
+        var desired_load_amount_max = parseInt($('#desired_loan_amount').find(':selected').attr('max'));
+
+        for(var scenario = 1; scenario < 7; scenario ++){
+            var desired_loan_amount = desired_load_amount_min + Math.random() * (desired_load_amount_max - desired_load_amount_min);
+            $('#scenario' + scenario).find('.block-count-employees').text(count_employees);
+            $('#scenario' + scenario).find('.average-monthly-payroll').text(formatter.format(desired_loan_amount / 12));
+            $('#scenario' + scenario).find('.desired-loan').text(formatter.format(desired_loan_amount));
+        }
+    }
+
+    $(document).on('click', '#btn_gen_scenarios', function(){
+        // calcResults()
+        generateScenarios()
     })
 </script>
